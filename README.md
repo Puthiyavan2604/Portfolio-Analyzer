@@ -33,7 +33,7 @@ You need **Python 3.x** installed on your system.
 1.  **Clone the Repository** (or download and unzip the file):
 
     ```bash
-    git clone https://github.com/YourUsername/Portfolio-Analyzer.git
+    git clone https://github.com/YourUsername/Portfolio-Analyzer.git](https://github.com/Puthiyavan2604/Portfolio-Analyzer.git
     cd Portfolio-Analyzer
     ```
 
