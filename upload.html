@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h5>Select stock</h5>
+      <form method="get" action="{{ url_for('plots') }}">
+        <div class="mb-2">
+          <select name="stock" class="form-select">
+            {% for s in stocks %}
+            <option value="{{ s }}" {% if s==selected %}selected{% endif %}>{{ s }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button class="btn btn-primary">Show</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card p-3">
+      <h5>{{ selected }} - Price Chart</h5>
+      {% if selected %}
+        <img src="{{ url_for('plots') }}?img=1&stock={{ selected }}" alt="chart" style="max-width:100%; height:auto;">
+        <hr>
+        <h6 class="mb-2">Recent data</h6>
+        <div style="max-height:220px; overflow:auto;">
+          <table class="table table-sm">
+            <thead><tr><th>Date</th><th class="text-end">Price</th></tr></thead>
+            <tbody>
+              {% for row in table %}
+              <tr>
+                <td>{{ row.Date }}</td>
+                <td class="text-end">{{ row.Price }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="small-muted">No stock selected.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
